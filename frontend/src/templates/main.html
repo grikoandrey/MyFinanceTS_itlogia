@@ -1,0 +1,51 @@
+<section class="main">
+    <div class="cont main__container">
+        <a class="btn btn-primary btn-menu" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+           aria-controls="offcanvasExample">Меню</a>
+        <div class="main__title">Главная</div>
+        <div class="main__menu incExp-menu d-flex gap-3 align-items-center">
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="today">Сегодня</button>
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="week">Неделя</button>
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="month">Месяц</button>
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="year">Год</button>
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="all">Все</button>
+            <button type="button" class="btn period-button btn-outline-secondary" id="applyPeriod">Интервал</button>
+            <div class="main__interval dropdown d-flex">с
+                <div class="dropdown">
+                    <a href="javascript:void(0)" data-bs-toggle="dropdown" aria-expanded="false">Дата</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <label for="dateStartInput" class="form-label d-none"></label>
+                            <input type="date" class="dropdown-item" id="dateStartInput">
+                        </li>
+                    </ul>
+                </div>
+                по
+                <div class="dropdown">
+                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false">Дата</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <label for="dateEndInput" class="form-label d-none"></label>
+                            <input type="date" class="dropdown-item" id="dateEndInput">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main__info d-flex justify-content-around">
+            <div class="income d-flex flex-column align-items-center">
+                <div class="main__info-title">Доходы</div>
+                <div class="main__info-diagram">
+                    <canvas id="myChartIncomes"></canvas>
+                </div>
+            </div>
+            <div class="main__line"></div>
+            <div class="expenses d-flex flex-column align-items-center">
+                <div class="main__info-title">Расходы</div>
+                <div class="main__info-diagram">
+                    <canvas id="myChartExpenses"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

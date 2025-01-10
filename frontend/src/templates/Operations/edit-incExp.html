@@ -1,0 +1,42 @@
+<section class="main edit-incExp">
+    <div class="cont container__edit-incExp">
+        <a class="btn btn-primary btn-menu" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+           aria-controls="offcanvasExample">Меню</a>
+        <div class="main__title common-incomes__title">Редактирование дохода/расхода</div>
+        <form>
+            <div class="common-incomes__input mb-3">
+                <select class="form-select" id="operationType" aria-label="Тип" style="--bs-form-select-bg-img: none">
+                    <option value="" selected disabled>Тип...</option>
+                    <option value="income">Доход</option>
+                    <option value="expense">Расход</option>
+                </select>
+                <span id="operationType-error" class="error invalid-feedback">Выберите тип</span>
+            </div>
+            <div class="common-incomes__input mb-4">
+                <select class="form-select" id="operationCategory" aria-label="Категория" style="--bs-form-select-bg-img: none">
+                    <option value="" selected disabled>Категория...</option>
+                </select>
+                <span id="operationCategory-error" class="error invalid-feedback">Выберите категорию</span>
+            </div>
+            <div class="common-incomes__input mb-3">
+                <label for="operationSum"></label>
+                <input type="number" class="form-control" id="operationSum" placeholder="Сумма в $...">
+                <span id="operationSum-error" class="error invalid-feedback">Введите сумму</span>
+            </div>
+            <div class="common-incomes__input mb-3">
+                <label for="operationDate"></label>
+                <input type="text" class="form-control" id="operationDate" placeholder="Дата...">
+                <span id="operationDate-error" class="error invalid-feedback">Введите дату (дд.мм.гггг)</span>
+            </div>
+            <div class="common-incomes__input mb-3">
+                <label for="operationComment"></label>
+                <input type="text" class="form-control" id="operationComment" placeholder="Комментарий...">
+                <span id="operationComment-error" class="error invalid-feedback">Введите комментарий</span>
+            </div>
+            <div class="input-action edit-incExp__action">
+                <button type="button" class="btn btn-success" id="operationEdit">Сохранить</button>
+                <a href="/operations" class="btn btn-danger">Отмена</a>
+            </div>
+        </form>
+    </div>
+</section>

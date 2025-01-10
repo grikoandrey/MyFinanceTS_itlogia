@@ -1,0 +1,73 @@
+<section class="main">
+    <div class="cont">
+        <a class="btn btn-primary btn-menu" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+           aria-controls="offcanvasExample">Меню</a>
+        <div class="main__title">Доходы и расходы</div>
+        <div class="input-action create-incExp">
+            <a type="button" onclick="sessionStorage.setItem('operationType', 'income')" href="/operation/create"
+               class="btn btn-success">Создать доход</a>
+            <a type="button" onclick="sessionStorage.setItem('operationType', 'expense')" href="/operation/create"
+               class="btn btn-danger">Создать расход</a>
+        </div>
+        <div class="main__menu incExp-menu d-flex gap-3 align-items-center">
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="today">Сегодня</button>
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="week">Неделя</button>
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="month">Месяц</button>
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="year">Год</button>
+            <button type="button" class="btn period-button btn-outline-secondary" data-period="all">Все</button>
+            <button type="button" class="btn period-button btn-outline-secondary" id="applyPeriod">Интервал</button>
+            <div class="main__interval dropdown d-flex">с
+                <div class="dropdown">
+                    <a href="javascript:void(0)" data-bs-toggle="dropdown" aria-expanded="false">Дата</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <label for="dateStartInput" class="form-label d-none"></label>
+                            <input type="date" class="dropdown-item" id="dateStartInput">
+                        </li>
+                    </ul>
+                </div>
+                по
+                <div class="dropdown">
+                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false">Дата</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <label for="dateEndInput" class="form-label d-none"></label>
+                            <input type="date" class="dropdown-item" id="dateEndInput">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <table id="operationsTable" class="table table-responsive table-hover text-center align-middle">
+            <thead class="align-middle">
+            <tr>
+                <th scope="col" style="max-width: 60px">№ операции</th>
+                <th scope="col">Тип</th>
+                <th scope="col">Категория</th>
+                <th scope="col">Сумма</th>
+                <th scope="col">Дата</th>
+                <th scope="col">Комментарий</th>
+                <th scope="col" style="width: 50px"></th>
+            </tr>
+            </thead>
+            <tbody id="operationsRecords" class="table-group-divider">
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="modal-text">Вы действительно хотите удалить операцию?</p>
+                <div class="modal-action">
+                    <a href="/operation/delete" type="button" class="btn btn-success" data-bs-dismiss="modal">Да,
+                        удалить</a>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<section class="main edit-expenses">
+    <div class="cont container__edit-expenses">
+        <a class="btn btn-primary btn-menu" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+           aria-controls="offcanvasExample">Меню</a>
+        <div class="main__title common-incomes__title">Редактирование категории расходов</div>
+        <form>
+            <div class="common-incomes__input mb-4">
+                <label for="expenseInput" class="form-label"></label>
+                <input type="text" class="form-control" id="expenseInput" placeholder="Название...">
+                <span id="expenseInput-error" class="error invalid-feedback">Введите категорию</span>
+            </div>
+            <div class="input-action edit-expenses__action">
+                <button id="expenseEdit" type="button" class="btn btn-success">Сохранить</button>
+                <a href="/expenses" class="btn btn-danger">Отмена</a>
+            </div>
+        </form>
+    </div>
+</section>

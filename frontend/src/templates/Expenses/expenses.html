@@ -1,0 +1,25 @@
+<section class="main incomes">
+    <div class="cont">
+        <a class="btn btn-primary btn-menu" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+           aria-controls="offcanvasExample">Меню</a>
+        <div class="main__title incomes__title">Расходы</div>
+        <div id="listExpenses" class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3 g-4 d-flex">
+
+        </div>
+    </div>
+</section>
+
+<!-- Модальное окно -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="modal-text">Вы действительно хотите удалить категорию?</p>
+                <div class="modal-action">
+                    <a href="/expenses/delete" type="button" class="btn btn-success" data-bs-dismiss="modal">Да, удалить</a>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
