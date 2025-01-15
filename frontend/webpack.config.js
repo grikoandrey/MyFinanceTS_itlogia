@@ -4,23 +4,16 @@ const CopyPlugin = require("copy-webpack-plugin");
 // const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/app.ts',
     mode: 'development',
-    output: {
-        filename: 'app.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/',
-    },
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'public'),
-        },
-        compress: true,
-        port: 9013,
-        historyApiFallback: true,
-    },
+    devtool: 'inline-source-map',
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
@@ -30,6 +23,23 @@ module.exports = {
                 ],
             },
         ],
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
+    output: {
+        filename: 'app.ts',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
+        clean: true,
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
+        compress: true,
+        port: 9013,
+        historyApiFallback: true,
     },
     plugins: [
         // new Dotenv(),
