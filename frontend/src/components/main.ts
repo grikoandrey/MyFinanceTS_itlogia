@@ -1,17 +1,19 @@
 import {OperationsService} from "../services/operations-service";
 import {NewRoute} from "../types/newRoute.type";
-import {ChartData, Operation} from "../types/main.type";
+import {Operation} from "../types/main.type";
 import {ReturnObject} from "../types/responce.type";
-import Chart from "../js/chart.umd.js";
+import Chart from "chart.js/auto";
+
 
 export class Main {
+
     readonly openNewRoute: NewRoute;
     readonly defaultPeriod: string
     readonly colorMap: Record<string, string> = {}
     readonly colors: string[];
 
-    incomeChart: Chart | null = null;
-    expenseChart: Chart | null = null;
+    incomeChart: any;
+    expenseChart: any;
     period: string = "";
 
     constructor(openNewRoute: NewRoute) {
@@ -92,8 +94,8 @@ export class Main {
         const {incomes, expenses} = this.processOperationsForChart(result.response);
 
         if (this.incomeChart && this.expenseChart) {
-            const incomeChartData: ChartData = this.prepareChartData(incomes);
-            const expenseChartData: ChartData = this.prepareChartData(expenses);
+            const incomeChartData = this.prepareChartData(incomes);
+            const expenseChartData = this.prepareChartData(expenses);
 
             this.updateChart(this.incomeChart, incomeChartData.labels, incomeChartData.data, incomeChartData.colors);
             this.updateChart(this.expenseChart, expenseChartData.labels, expenseChartData.data, expenseChartData.colors);
@@ -121,8 +123,8 @@ export class Main {
 
         const {incomes, expenses} = this.processOperationsForChart(operations);
 
-        const incomeChartData: ChartData = this.prepareChartData(incomes);
-        const expenseChartData: ChartData = this.prepareChartData(expenses);
+        const incomeChartData = this.prepareChartData(incomes);
+        const expenseChartData = this.prepareChartData(expenses);
 
         const ctxIncomesElement = document.getElementById('myChartIncomes') as HTMLCanvasElement | null;
         const ctxExpensesElement = document.getElementById('myChartExpenses') as HTMLCanvasElement | null;
@@ -134,6 +136,11 @@ export class Main {
 
         const ctxIncomes = ctxIncomesElement.getContext('2d');
         const ctxExpenses = ctxExpensesElement.getContext('2d');
+
+        if (!ctxIncomes || !ctxExpenses) {
+            console.error('Не удалось получить контекст 2D для диаграмм.');
+            return;
+        }
 
         this.incomeChart = new Chart(ctxIncomes, {
             type: 'pie',
@@ -181,7 +188,7 @@ export class Main {
         return {incomes, expenses};
     }
 
-    private prepareChartData(data: Record<string, number>): ChartData {
+    private prepareChartData(data: Record<string, number>) {
         const labels = Object.keys(data);
         const values = Object.values(data);
         const colors = labels.map((label, index) => this.getCategoryColor(label, index));
@@ -194,7 +201,7 @@ export class Main {
         };
     };
 
-    getCategoryColor(category: Chart, index: number): string {
+    getCategoryColor(category: string, index: number): string {
         if (!this.colorMap[category]) {
             this.colorMap[category] = this.colors[index % this.colors.length];
         }

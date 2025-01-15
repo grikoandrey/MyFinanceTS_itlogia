@@ -28,7 +28,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-        filename: 'app.ts',
+        filename: 'app.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         clean: true,
@@ -55,7 +55,7 @@ module.exports = {
                 {from: "./src/styles/bootstrap.min.css", to: "css"},
 
                 {from: "./src/js/bootstrap.bundle.min.js", to: "js"},
-                {from: "./node_modules/chart.js/dist/chart.umd.js", to: "js"},
+                {from: "./node_modules/chart.js/dist/chart.js", to: "js"},
                 // {from: "./src/js/diagram.js", to: "js"},
             ],
         }),

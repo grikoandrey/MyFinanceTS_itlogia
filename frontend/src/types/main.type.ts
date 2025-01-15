@@ -3,9 +3,3 @@ export type Operation = {
     amount: number;
     category: string;
 };
-
-export type ChartData = {
-    labels: string[];
-    data: number[];
-    colors: string[];
-};
